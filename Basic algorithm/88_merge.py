@@ -2,7 +2,7 @@
 # Name:         88_merge
 # Author:       shenchenlove
 # Date:         2022/8/2 21:50
-# Description:  88. 合并两个有序数组
+# Description:  88. 合并两个有序数组 https://leetcode.cn/problems/merge-sorted-array/
 
 from typing import *
 

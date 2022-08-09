@@ -2,7 +2,7 @@
 # Name:         3_lengthOfLongestSubstring
 # Author:       shenchenlove
 # Date:         2022/7/25 20:27
-# Description:  3. 无重复字符的最长子串
+# Description:  3. 无重复字符的最长子串 https://leetcode.cn/problems/longest-substring-without-repeating-characters/
 
 class Solution:
     def lengthOfLongestSubstring(self, s: str) -> int:

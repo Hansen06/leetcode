@@ -2,7 +2,7 @@
 # Name:         4_findMedianSortedArrays
 # Author:       shenchenlove
 # Date:         2022/8/2 22:05
-# Description:
+# Description:  4. 寻找两个正序数组的中位数 https://leetcode.cn/problems/median-of-two-sorted-arrays/
 
 from typing import *
 

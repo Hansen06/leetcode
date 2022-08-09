@@ -2,7 +2,7 @@
 # Name:         2_addTwoNumbers
 # Author:       shenchenlove
 # Date:         2022/7/21 20:56
-# Description:  2. 两数相加
+# Description:  2. 两数相加 https://leetcode.cn/problems/add-two-numbers/
 
 from typing import *
 

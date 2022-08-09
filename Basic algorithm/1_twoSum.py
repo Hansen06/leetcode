@@ -2,7 +2,7 @@
 # Name:         1_twoSum
 # Author:       shenchenlove
 # Date:         2022/7/19 20:55
-# Description:  1. 两数之和
+# Description:  1. 两数之和  https://leetcode.cn/problems/two-sum/
 
 from typing import List
 
