@@ -9,7 +9,8 @@ from typing import *
 class Solution:
     def merge(self, nums1: List[int], m: int, nums2: List[int], n: int) -> None:
         """
-        Do not return anything, modify nums1 in-place instead.
+        使用双指针方法，将两个数组看作队列，每次从两个数组头部取出比较小的数字放到结果中
+        时间负责度O(m+n)
         """
         tp = []
         p0 = 0

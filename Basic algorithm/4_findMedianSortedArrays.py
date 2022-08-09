@@ -8,6 +8,9 @@ from typing import *
 
 class Solution:
     def findMedianSortedArrays(self, nums1: List[int], nums2: List[int]) -> float:
+        '''
+        归并排序思想，时间复杂度O(m+n)
+        '''
         tp = []
         p0 = 0
         p1 = 0
@@ -30,6 +33,13 @@ class Solution:
             return tp[int(len(tp)/2)]
         else:
             return (tp[int(len(tp)/2)-1] + tp[int(len(tp)/2)])/2
+
+    def findMedianSortedArrays(self, nums1: List[int], nums2: List[int]) -> float:
+        '''
+        二分查找，时间复杂度O(log(m + n)
+        '''
+
+
 
 if __name__ == '__main__':
     solution = Solution()
