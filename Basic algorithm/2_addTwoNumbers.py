@@ -43,6 +43,53 @@ class Solution:
 
         return head.next
 
+    def addTwoNumbers1(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:
+        '''
+        占用其中一个链表，节省空姐，并且如果一个为空后即结束循环
+        :param l1:
+        :param l2:
+        :return:
+        '''
+        res = l1
+        carry = 0
+        # 死循环
+        while True:
+            # 计算本位和
+            cur = l1.val + l2.val + carry
+            if cur >= 10:
+                carry = 1
+                l1.val = cur - 10
+            else:
+                carry = 0
+                l1.val = cur
+            # 如果短指针的后继是空
+            if l1.next is None:
+                # 长指针后置
+                l2 = l2.next
+                # 短指针的后继长指针
+                l1.next = l2
+                # 退出
+                break
+            elif l2.next is None:
+                break
+            # 两指针后置
+            l1, l2 = l1.next, l2.next
+        # 当长指针不是空时
+        while l1.next:
+            l1 = l1.next
+            # 计算本位
+            cur = l1.val + carry
+            # 计算进位
+            carry = cur // 10
+            # 更新本位
+            l1.val = cur % 10
+        # 如果进位大于0
+        if carry > 0:
+            # 生成一个新结点，其值是进位，将其加入长指针后
+            l1.next = ListNode(carry)
+        # 返回
+        return res
+
 
 if __name__ == '__main__':
     solution = Solution()
@@ -61,7 +108,7 @@ if __name__ == '__main__':
         if idx < len(l2):
             point2 = point2.next
 
-    res = solution.addTwoNumbers(_l1, _l2)
+    res = solution.addTwoNumbers1(_l1, _l2)
     while res:
         print(res.val)
         res = res.next
