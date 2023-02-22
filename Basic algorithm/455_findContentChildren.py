@@ -8,6 +8,12 @@ from typing import *
 
 class Solution:
     def findContentChildren(self, g: List[int], s: List[int]) -> int:
+        '''
+        贪心策略是，给剩余孩子里最小饥饿度的孩子分配最小的能饱腹的饼干
+        :param g:
+        :param s:
+        :return:
+        '''
         g.sort()
         s.sort()
         child = 0

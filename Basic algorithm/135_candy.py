@@ -7,6 +7,11 @@
 from typing import *
 class Solution:
     def candy(self, ratings: List[int]) -> int:
+        '''
+        贪心策略即为，在每次遍历中，只考虑并更新相邻一侧的大小关系
+        :param ratings:
+        :return:
+        '''
         r_len = len(ratings)
         if r_len < 2:
             return r_len
