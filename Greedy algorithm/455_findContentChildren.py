@@ -18,8 +18,8 @@ class Solution:
         s.sort()
         child = 0
         cookies = 0
-        g_len = 0
-        s_len = 0
+        g_len = len(g)
+        s_len = len(s)
         while child < g_len and cookies < s_len:
             if g[child] <= s[cookies]:
                 child += 1
