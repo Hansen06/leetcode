@@ -32,39 +32,50 @@ class Solution:
                 new_th.append([min, max])
                 min = pre_poi[0]
                 max = pre_poi[1]
+
+                last_poi = new_th[-1]
+                le_new = len(new_th)
+                n_min = last_poi[0]
+                n_max = last_poi[1]
+                record = [last_poi] #记录需要再次合并的区间
+                for j in range(le_new-2,-1,-1): #从后往前循环
+                    if last_poi[0] < new_th[j][1]:
+                        record.append(new_th[j])
+
+                for k in record:
+                    new_th.remove(k)
+                    n_min = n_min if n_min <= k[0] else k[0]
+                    n_max = n_max if n_max >= k[1] else k[1]
+                new_th.append([n_min, n_max])
             else:
                 min = min if min <= points[i][0] else points[i][0]
                 max = max if max >= points[i][1] else points[i][1]
+
             if i == le-1:
                 min = min if min <= points[i][0] else points[i][0]
                 max = max if max >= points[i][1] else points[i][1]
                 new_th.append([min, max])
 
+        ###需要考虑最后不能合并的情况
         print(new_th)
-        new_th.sort(key=lambda x:x[1])
-        pre_poi = new_th[0]
-        le = len(new_th)
-        min = pre_poi[0]
-        max = pre_poi[1]
-        final_th = []
-        for i in range(1, le):
-            if new_th[i][0] > pre_poi[1]:
-                pre_poi = new_th[i]
-                final_th.append([min, max])
-                min = pre_poi[0]
-                max = pre_poi[1]
-            else:
-                min = min if min <= new_th[i][0] else new_th[i][0]
-                max = max if max >= new_th[i][1] else new_th[i][1]
-            if i == le-1:
-                min = min if min <= new_th[i][0] else new_th[i][0]
-                max = max if max >= new_th[i][1] else new_th[i][1]
-                final_th.append([min, max])
+        last_poi = new_th[-1]
+        le_new = len(new_th)
+        n_min = last_poi[0]
+        n_max = last_poi[1]
+        record = [last_poi]
+        for j in range(le_new - 2, -1, -1):
+            if last_poi[0] < new_th[j][1]:
+                record.append(new_th[j])
 
-        print(final_th)
+        for k in record:
+            new_th.remove(k)
+            n_min = n_min if n_min <= k[0] else k[0]
+            n_max = n_max if n_max >= k[1] else k[1]
+        new_th.append([n_min, n_max])
 
-        return [x[1]-x[0]+1 for x in final_th]
+        print(new_th)
 
+        return [x[1]-x[0]+1 for x in new_th]
 
 
 if __name__ == '__main__':
