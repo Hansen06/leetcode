@@ -16,7 +16,7 @@ class Solution:
             mid = (start + end)//2
             if nums[mid] == target:
                 return mid
-            if nums[start] <= nums[mid]: # 左侧有序
+            if nums[start] <= nums[mid]: # 左侧有序  这里注意等号
                 if target < nums[mid] and target >= nums[start]:
                     end = mid - 1
                 else:
