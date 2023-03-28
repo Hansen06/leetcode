@@ -5,46 +5,72 @@
 # Description : 剑指 Offer 40. 最小的k个数
 
 from typing import *
-
-def exchange(arr, i, j):
-    tmp = arr[i]
-    arr[i] = arr[j]
-    arr[j] = tmp
-
-def quick_sort(arr, start, end):
-    if start >= end:
+def quick_sort(arr, left, right):
+    '''
+    快排 时间复杂度O(NlogN)
+    :param arr:
+    :param left:
+    :param right:
+    :return:
+    '''
+    if left >= right:
         return
-    mid = partition(arr, start, end)
-    quick_sort(arr, start, mid-1)
-    quick_sort(arr, mid+1, end)
+    first = left
+    last = right
+    key = arr[first]
+    while first < last:
+        while first < last and key <= arr[last]:
+            last -= 1
+        arr[first] = arr[last]
+        while first < last and key >= arr[first]:
+            first += 1
+        arr[last] = arr[first]
 
-def partition(arr, start, end):
-    pivot = arr[start]
-    left = start + 1
-    right = end
-    while left < right:
-        while left < right and pivot >= arr[left]:
-            left += 1
-        while left < right and pivot <= arr[right]:
-            right -= 1
-        if left < right:
-            exchange(arr, left, right)
-            left += 1
-            right -= 1
+    arr[first] = key
+    quick_sort(arr, left, first)
+    quick_sort(arr, first+1, right)
 
-    if left == right and pivot < arr[right]:
-        right -= 1
-    exchange(arr, start, right)
-    return right
+def quick_sort(arr, left, right, k):
+    '''
+    时间复杂度O(N) N+N/2+N/4+...+N/N = (N-1/2)/(1-1/2) = 2N-1
+    :param arr:
+    :param left:
+    :param right:
+    :param k:
+    :return:
+    '''
+    if k >= len(arr):
+        return arr
+    first = left
+    last = right
+    key = arr[first]
+    while first < last:
+        while first < last and key <= arr[last]:
+            last -= 1
+        arr[first] = arr[last]
+        while first < last and key >= arr[first]:
+            first += 1
+        arr[last] = arr[first]
+    arr[first] = key
+    if k < first:
+        quick_sort(arr, left, first, k)
+    if k > first:
+        quick_sort(arr, first+1, right, k)
+
+    return arr[:k]
+
+
 
 class Solution:
     def getLeastNumbers(self, arr: List[int], k: int) -> List[int]:
-        quick_sort(arr, 0, len(arr)-1)
-        return arr[:k]
+        # quick_sort(arr, 0, len(arr)-1)
+        # print(arr)
+        # return arr[:k]
+        return quick_sort(arr, 0, len(arr)-1, k)
 
 if __name__ == '__main__':
     solution = Solution()
-    arr = [3, 6, 1]
+    arr = [3, 2, 1]#[0,1,2,1]
     k = 2
     print(solution.getLeastNumbers(arr, k))
 
