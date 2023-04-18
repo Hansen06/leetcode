@@ -77,8 +77,22 @@ class Solution:
 
         return [x[1]-x[0]+1 for x in new_th]
 
+    def partitionLabels1(self, s: str) -> List[int]:
+        last = {}
+        for i, ch in enumerate(s):
+            last[ch] = i
+
+        partition = list()
+        start = end = 0
+        for i, ch in enumerate(s):
+            end = max(end, last[ch])
+            if i == end:
+                partition.append(end - start + 1)
+                start = end + 1
+
+        return partition
 
 if __name__ == '__main__':
     solution = Solution()
     s = "ababcbacadefegdehijhklij"
-    print(solution.partitionLabels(s))
+    print(solution.partitionLabels1(s))
