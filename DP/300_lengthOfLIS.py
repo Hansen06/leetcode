@@ -43,6 +43,7 @@ class Solution:
             tails[left] = num
             if right == len_tails:
                 len_tails += 1
+        print(tails)
         return len_tails
 
 if __name__ == '__main__':
