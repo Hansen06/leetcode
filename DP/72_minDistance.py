@@ -3,7 +3,7 @@
 # File         : 72_minDistance.py
 # Author       : haishen.yao
 # Time         : 2023/5/5 下午8:45
-# Description  : 72. 编辑距离
+# Description  : 72. 编辑距离 https://leetcode.cn/problems/edit-distance/solution/edit-distance-by-ikaruga/
 
 from typing import *
 
